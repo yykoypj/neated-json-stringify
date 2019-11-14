@@ -1,0 +1,19 @@
+{
+  "name": "sorted-json-stringify",
+  "version": "0.1.0",
+  "description": "参照stable-json-stringify,用自己语言重新实现一遍",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "sorted",
+    "json",
+    "stringify"
+  ],
+  "author": "yykoypj",
+  "license": "MIT",
+  "dependencies": {
+    "jsonify": "0.0.0"
+  }
+}
