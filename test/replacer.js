@@ -1,27 +1,32 @@
+var test = require('tape');
 var stringify = require('../');
 
-test('normal json replacer', ()=>{
+test('normal json replacer', function (t) {
+  t.plan(1);
   var obj = {a:1,b:2, c:3};
-  expect(stringify(obj, ["b", "a"])).toEqual('{"b":2,"a":1}');
+  t.equal(stringify(obj, ["b", "a"]), '{"b":2,"a":1}');
 })
 
-test('replace root', ()=>{
+test('replace root', function (t) {
+  t.plan(1);
 	var obj = { a: 1, b: 2, c: false };
 	var replacer = function(key, value) { return 'one'; };
-	expect(stringify(obj, { replacer: replacer })).toEqual('"one"');
+	t.equal(stringify(obj, { replacer: replacer }), '"one"');
 });
 
-test('replace numbers', ()=>{
+test('replace numbers', function (t) {
+  t.plan(1);
 	var obj = { a: 1, b: 2, c: false };
 	var replacer = function(key, value) {
 		if(value === 1) return 'one';
 		if(value === 2) return 'two';
 		return value;
 	};
-	expect(stringify(obj, { replacer: replacer })).toEqual( '{"a":"one","b":"two","c":false}');
+	t.equal(stringify(obj, { replacer: replacer }), '{"a":"one","b":"two","c":false}');
 });
 
-test('replace with object', ()=>{
+test('replace with object', function (t) {
+  t.plan(1);
 
 	var obj = { a: 1, b: 2, c: false };
 	var replacer = function(key, value) {
@@ -30,10 +35,11 @@ test('replace with object', ()=>{
 		return value;
 	};
 
-	expect(stringify(obj, { replacer: replacer })).toEqual( '{"a":"one","b":{"d":"one"},"c":false}');
+	t.equal(stringify(obj, { replacer: replacer }), '{"a":"one","b":{"d":"one"},"c":false}');
 });
 
-test('replace with undefined', ()=>{
+test('replace with undefined', function (t) {
+  t.plan(1);
 
 	var obj = { a: 1, b: 2, c: false };
 	var replacer = function(key, value) {
@@ -41,10 +47,11 @@ test('replace with undefined', ()=>{
 		return value;
 	};
 
-	expect(stringify(obj, { replacer: replacer })).toEqual( '{"a":1,"b":2}');
+	t.equal(stringify(obj, { replacer: replacer }), '{"a":1,"b":2}');
 });
 
-test('replace with array', ()=>{
+test('replace with array', function (t) {
+  t.plan(1);
 
 	var obj = { a: 1, b: 2, c: false };
 	var replacer = function(key, value) {
@@ -52,10 +59,11 @@ test('replace with array', ()=>{
 		return value;
 	};
 
-	expect(stringify(obj, { replacer: replacer })).toEqual( '{"a":1,"b":["one","two"],"c":false}');
+	t.equal(stringify(obj, { replacer: replacer }), '{"a":1,"b":["one","two"],"c":false}');
 });
 
-test('replace array item', ()=>{
+test('replace array item', function (t) {
+  t.plan(1);
 
 	var obj = { a: 1, b: 2, c: [1,2] };
 	var replacer = function(key, value) {
@@ -64,5 +72,5 @@ test('replace array item', ()=>{
 		return value;
 	};
 
-	expect(stringify(obj, { replacer: replacer })).toEqual( '{"a":"one","b":"two","c":["one","two"]}');
+	t.equal(stringify(obj, { replacer: replacer }), '{"a":"one","b":"two","c":["one","two"]}');
 });

@@ -1,8 +1,10 @@
+var test = require('tape');
 var stringify = require('../');
 
-test('space parameter', () => {
+test('space parameter', function (t) {
+    t.plan(1);
     var obj = { one: 1, two: 2 };
-    expect(stringify(obj, {space: '  '})).toEqual(''
+    t.equal(stringify(obj, { space: '  ' }), ''
         + '{\n'
         + '  "one": 1,\n'
         + '  "two": 2\n'
@@ -10,9 +12,10 @@ test('space parameter', () => {
     );
 });
 
-test('space parameter (with tabs)', () => {
+test('space parameter (with tabs)', function (t) {
+    t.plan(1);
     var obj = { one: 1, two: 2 };
-    expect(stringify(obj, {space: '\t'})).toEqual(''
+    t.equal(stringify(obj, { space: '\t' }), ''
         + '{\n'
         + '\t"one": 1,\n'
         + '\t"two": 2\n'
@@ -20,9 +23,10 @@ test('space parameter (with tabs)', () => {
     );
 });
 
-test('space parameter (with a number)', () => {
+test('space parameter (with a number)', function (t) {
+    t.plan(1);
     var obj = { one: 1, two: 2 };
-    expect(stringify(obj, {space: 3})).toEqual(''
+    t.equal(stringify(obj, { space: 3 }), ''
         + '{\n'
         + '   "one": 1,\n'
         + '   "two": 2\n'
@@ -30,9 +34,10 @@ test('space parameter (with a number)', () => {
     );
 });
 
-test('space parameter (nested objects)', () => {
-    var obj = { one: 1, two: { b: 4, a: [2,3] } };
-    expect(stringify(obj, {space: '  '})).toEqual(''
+test('space parameter (nested objects)', function (t) {
+    t.plan(1);
+    var obj = { one: 1, two: { b: 4, a: [2, 3] } };
+    t.equal(stringify(obj, { space: '  ' }), ''
         + '{\n'
         + '  "one": 1,\n'
         + '  "two": {\n'
@@ -46,8 +51,9 @@ test('space parameter (nested objects)', () => {
     );
 });
 
-test('space parameter (same as native)', () => {
+test('space parameter (same as native)', function (t) {
+    t.plan(1);
     // for this test, properties need to be in alphabetical order
-    var obj = { one: 1, two: { a: [2,3], b: 4 } };
-    expect(stringify(obj, {space: '  '})).toEqual(JSON.stringify(obj, null, '  '));
+    var obj = { one: 1, two: { a: [2, 3], b: 4 } };
+    t.equal(stringify(obj, { space: '  ' }), JSON.stringify(obj, null, '  '));
 });
