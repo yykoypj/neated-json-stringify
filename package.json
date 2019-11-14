@@ -1,10 +1,10 @@
 {
   "name": "sorted-json-stringify",
   "version": "0.1.0",
-  "description": "参照stable-json-stringify,用自己语言重新实现一遍",
+  "description": "a variation of json-stable-stringify for deterministic JSON.stringify()",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "tape test/*.js"
   },
   "keywords": [
     "sorted",
@@ -17,6 +17,6 @@
     "jsonify": "0.0.0"
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "tape": "^4.11.0"
   }
 }
