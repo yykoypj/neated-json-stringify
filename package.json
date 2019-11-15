@@ -1,5 +1,5 @@
 {
-  "name": "sorted-json-stringify",
+  "name": "neated-json-stringify",
   "version": "0.1.0",
   "description": "a variation of json-stable-stringify for deterministic JSON.stringify()",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "tape test/*.js"
   },
   "keywords": [
-    "sorted",
+    "neated",
     "json",
     "stringify"
   ],

@@ -1,4 +1,4 @@
-# sorted-json-stringify
+# neated-json-stringify
 a variation of json-stable-stringify for deterministic JSON.stringify().
 
 ## API
